@@ -3,15 +3,11 @@ class InventoriesController < ApplicationController
     @inventories = Inventory.all
   end
 
-  def show
-  end
+  def show; end
 
-  def new
-  end
+  def new; end
 
-  def create
-  end
+  def create; end
 
-  def destroy
-  end
+  def destroy; end
 end
