@@ -1,2 +1,34 @@
-<h1>Foods#index</h1>
-<p>Find me in app/views/foods/index.html.erb</p>
+<div>
+  <h1>Food List</h1>
+  <%= link_to 'Add Food', new_food_path %>
+</div>
+
+<% if @foods.empty? %>
+  <p>Please add foods using the Add Food button</p>
+<% else %>
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Measurement Unit</th>
+      <th>Unit Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.food %></td>
+        <td><%= food.measurement_unit %></td>
+        <td>$<%= food.price %></td>
+        <td>
+          <% if can? :destroy, food %>
+            <%= link_to 'Delete Food', food, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this food! Do you want to continue?' }, type:"button" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
