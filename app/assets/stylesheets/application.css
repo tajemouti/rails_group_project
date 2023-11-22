@@ -1,15 +1,146 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.auth-forms{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 100px;
+}
+
+.auth-forms:after{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: url("https://images.unsplash.com/photo-1542990253-a781e04c0082?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHJlY2lwZXxlbnwwfDB8MHx8fDA%3D") no-repeat center;
+	background-size: cover;
+	filter: blur(50px);
+	z-index: -1;
+}
+
+.form-box{
+  max-width: 1000px;
+  margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: #fff;
+	box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
+}
+
+.left{
+	background: url("https://images.unsplash.com/photo-1542990253-a781e04c0082?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHJlY2lwZXxlbnwwfDB8MHx8fDA%3D") no-repeat;
+	background-size: cover;
+	height: 100%;
+}
+
+.right{
+	padding: 40px;
+}
+
+h2{
+	position: relative;
+	padding: 0 0 10px;
+	margin-bottom: 10px;
+}
+
+h2:after{
+	content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 50px;
+    border-radius: 2px;
+    background-color: #2ecc71;
+}
+
+.field input{
+	width: 100%;
+	border: 2px solid rgba(0, 0, 0, 0);
+	outline: none;
+	background-color: rgba(230, 230, 230, 0.6);
+	padding: 0.5rem 1rem;
+	font-size: 1.1rem;
+	margin-bottom: 22px;
+	transition: .3s;
+}
+
+.field input:hover{
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+	margin-bottom: 22px;
+}
+
+.actions input[type="submit"] {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: #2ecc71;
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: .3s;
+	margin-bottom: 22px;
+}
+
+.actions input[type="submit"]:hover {
+  background-color: #27ae60;
+}
+
+.field input:focus{
+    border: 2px solid rgba(30,85,250,0.47);
+    background-color: #fff;
+}
+
+@media screen and (max-width: 880px){
+	.form-box{
+		grid-template-columns: 1fr;
+	}
+	.left{
+		height: 200px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.auth-forms{
+			padding: 10px;
+	}
+
+	.form-box {
+			max-width: 100%;
+	}
+
+	.left {
+			height: 150px;
+	}
+
+	.right {
+			padding: 15px;
+	}
+}
