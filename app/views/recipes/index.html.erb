@@ -1,2 +1,20 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<h1>Recipe List</h1>
+<%= link_to 'Add Recipe', new_recipe_path %>
+
+<% if @recipes.empty? %>
+  <p>No recipes yet. Please add a recipe.</p>
+<% else %>
+<div> 
+  <ul>
+    <% @recipes.each do |rcp| %>
+        <li>
+          <h4><%= rcp.name %></h4>
+          <p><%= rcp.description %></p>
+          <% if can? :destroy, rcp %>
+            <%= link_to 'Remove', rcp, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this recipe! Do you want to continue?' }, type:"button" %>
+          <% end %>
+        </li>
+    <% end %> 
+  </ul>
+</div>
+<% end %>
