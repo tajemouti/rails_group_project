@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :destroy]
+  before_action :set_recipe, only: %i[show destroy]
 
   def index
     @recipes = current_user.recipes
@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
     authorize! :destroy, @recipe
-    
+
     respond_to do |format|
       format.html { redirect_to recipes_url, notice: 'Recipe removed successfully.' }
     end
