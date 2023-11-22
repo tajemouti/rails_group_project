@@ -15,15 +15,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_21_103331) do
   enable_extension "plpgsql"
 
   create_table "foods", force: :cascade do |t|
-    t.string "name"
+    t.string "food"
     t.string "measurement_unit"
-    t.decimal "price"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
   create_table "inventories", force: :cascade do |t|
     t.string "name"
+    t.text "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,9 +34,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_21_103331) do
   end
 
   create_table "inventory_foods", force: :cascade do |t|
-    t.integer "quantity"
+    t.bigint "quantity"
     t.bigint "inventory_id", null: false
     t.bigint "food_id", null: false
+    t.integer "user"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["food_id"], name: "index_inventory_foods_on_food_id"
@@ -55,7 +59,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_21_103331) do
     t.integer "preparation_time"
     t.integer "cooking_time"
     t.text "description"
-    t.boolean "public"
+    t.boolean "public", default: true
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -75,6 +79,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_21_103331) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "foods", "users"
   add_foreign_key "inventories", "users"
   add_foreign_key "inventory_foods", "foods"
   add_foreign_key "inventory_foods", "inventories"
