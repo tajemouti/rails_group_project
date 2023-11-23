@@ -11,41 +11,10 @@
   </head>
 
   <body>
-    <nav>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <ul>
-        <% if user_signed_in? %>
-          <li>
-          <%= link_to 'Recipe App', authenticated_root_path %>
-          </li>
+    <%= render partial: "layouts/navbar" %>
 
-          <li>
-            <%= link_to 'Foods', foods_path %>
-          </li>
-
-          <li>
-            <%= link_to 'Recipies', recipes_path %>
-          </li>
-
-          <li>
-            <%= link_to 'Public Recipies', public_recipes_path %>
-          </li>
-
-          <li>
-            <%= link_to 'Inventories', inventories_path %>
-          </li>
-
-          <li>
-            <p>Hi <%= current_user.name %></p>
-          </li>
-
-          <li>
-            <%= link_to 'Sign Out', destroy_user_session_path , method: :delete %>
-          </li>
-        <% end %>
-      </ul>
-    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
     <%= yield %>
   </body>
