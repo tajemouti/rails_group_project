@@ -145,3 +145,32 @@ h2::after {
     padding: 15px;
   }
 }
+
+.navbar {
+  background-color: #2ecc71;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.user-options ul {
+  display: flex;
+}
