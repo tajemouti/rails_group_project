@@ -1,21 +1,27 @@
-<h1>Create new Recipe</h1>
-
+<section class="auth-forms">
+  <div class="form-box">
+    <div class="left-recipe"></div>
+    <div class="right">
+      <h2>Create new Recipe</h2>
+      <%= form_with model: @recipe, method: :post, local: true do |f| %>
+        <div class="field">
+          <%= f.text_field :name, placeholder: "Recipe name", required: true %>
+        </div>
+        <div class="field">
+          <%= f.text_field :cooking_time, placeholder: "Coooking time", required: true %>
+        </div>
+        <div class="field">
+          <%= f.text_field :preparation_time, placeholder: "Preparation time", required: true %>
+        </div>
+        <div class="field">
+          <%= f.text_area :description, placeholder: "Description", required: true %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Add Recipe" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
 <div class="form-group">
-  <%= form_with model: @recipe, method: :post, local: true do |f| %>
-    <div class="field">
-      <%= f.text_field :name, placeholder: "Recipe name", required: true %>
-    </div>
-    <div class="field">
-      <%= f.text_field :cooking_time, placeholder: "Coooking time", required: true %>
-    </div>
-    <div class="field">
-      <%= f.text_field :preparation_time, placeholder: "Preparation time", required: true %>
-    </div>
-    <div class="field">
-      <%= f.text_area :description, placeholder: "Description", required: true %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Add Recipe" %>
-    </div>
-  <% end %>
 </div>

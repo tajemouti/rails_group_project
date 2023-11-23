@@ -1,19 +1,21 @@
-<h1>Public recipes list</h1>
-<% if @recipes.empty? %>
-  <p>No public recipes for the moment!</p>
-<% else %>
-<ul>
-  <% @recipes.each do |recipe| %>
-    <li>
-      <%= link_to recipe_path(recipe.id) do %>
-        <div>
-          <p><%= recipe.name %> by <%= recipe.user.name %></p>
-        </div>
-        <div>
-          <p><%= recipe.description %></p>
-        </div>
-      <% end %>
-    </li>
+<section class="hero">
+  <h1>Public recipes list</h1>
+  <% if @recipes.empty? %>
+    <p>No public recipes for the moment!</p>
+  <% else %>
+  <ul>
+    <% @recipes.each do |recipe| %>
+      <li>
+        <%= link_to recipe_path(recipe.id) do %>
+          <div>
+            <p><%= recipe.name %> by <%= recipe.user.name %></p>
+          </div>
+          <div>
+            <p><%= recipe.description %></p>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
   <% end %>
-</ul>
-<% end %>
+</section>
