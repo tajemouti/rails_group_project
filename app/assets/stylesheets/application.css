@@ -145,3 +145,33 @@ h2::after {
     padding: 15px;
   }
 }
+
+.navbar {
+  background-color: #27ae60;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.navbar h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
