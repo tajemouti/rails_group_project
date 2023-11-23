@@ -118,12 +118,48 @@ h2::after {
   background-color: #fff;
 }
 
+.left-food {
+  background: url("https://plus.unsplash.com/premium_photo-1670601440146-3b33dfcd7e17?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGZvb2R8ZW58MHwwfDB8fHww") no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.left-recipe {
+  background: url("https://images.unsplash.com/photo-1542010589005-d1eacc3918f2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVjaXBlfGVufDB8MHwwfHx8MA%3D%3D") no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.left-inventory {
+  background: url("https://images.unsplash.com/photo-1423483641154-5411ec9c0ddf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGludmVudG9yeSUyMGZvb2R8ZW58MHwwfDB8fHww") no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.field textarea {
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0);
+  outline: none;
+  background-color: rgba(230, 230, 230, 0.6);
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+  transition: 0.3s;
+}
+
+.field textarea:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 @media screen and (max-width: 880px) {
   .form-box {
     grid-template-columns: 1fr;
   }
 
-  .left {
+  .left,
+  .left-food,
+  .left-recipe,
+  .left-inventory {
     height: 200px;
   }
 }
@@ -137,7 +173,10 @@ h2::after {
     max-width: 100%;
   }
 
-  .left {
+  .left,
+  .left-food,
+  .left-recipe,
+  .left-inventory {
     height: 150px;
   }
 
