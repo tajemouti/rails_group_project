@@ -11,8 +11,21 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <nav>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <ul>
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to 'Recipe App', authenticated_root_path %>
+          </li>
+
+          <li>
+            <%= link_to 'Foods', foods_path %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
 
     <%= yield %>
   </body>
