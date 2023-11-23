@@ -1,20 +1,24 @@
-<h1>Recipe List</h1>
-<%= link_to 'Add Recipe', new_recipe_path %>
+<section class="hero">
+  <h1>Recipe List</h1>
+  <%= link_to 'Add Recipe', new_recipe_path %>
 
-<% if @recipes.empty? %>
-  <p>No recipes yet. Please add a recipe.</p>
-<% else %>
-<div> 
-  <ul>
-    <% @recipes.each do |rcp| %>
-        <li>
-          <h4><%= rcp.name %></h4>
-          <p><%= rcp.description %></p>
-          <% if can? :destroy, rcp %>
-            <%= link_to 'Remove', rcp, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this recipe! Do you want to continue?' }, type:"button" %>
-          <% end %>
-        </li>
-    <% end %> 
-  </ul>
-</div>
-<% end %>
+  <% if @recipes.empty? %>
+    <p>No recipes yet. Please add a recipe.</p>
+  <% else %>
+  <div> 
+    <ul class="recipe-list">
+      <% @recipes.each do |rcp| %>
+          <li>
+            <div class="recipe-item">
+              <h4><%= rcp.name %></h4>
+              <% if can? :destroy, rcp %>
+                <%= link_to 'Remove', rcp, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this recipe! Do you want to continue?' }, type:"button" %>
+              <% end %>
+            </div>
+            <p><%= rcp.description %></p>
+          </li>
+      <% end %> 
+    </ul>
+  </div>
+  <% end %>
+</section>

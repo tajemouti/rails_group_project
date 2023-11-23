@@ -1,24 +1,26 @@
-<h1>Inventory List</h1>
-<%= link_to 'Add Inventory', new_inventory_path %>
+<section class="hero">
+  <h1>Inventory List</h1>
+  <%= link_to 'Add Inventory', new_inventory_path %>
 
-<% if @inventories.empty? %>
-  <p>No inventories yet. Please add an inventory.</p>
-<% else %>
+  <% if @inventories.empty? %>
+    <p>No inventories yet. Please add an inventory.</p>
+  <% else %>
 
-<ul>
-  <% @inventories.each do |invt| %>
-    <%= link_to inventory_path(invt.id) %>
-    <li>
-      <h4><%= invt.name %></h4>
-      <p><%= invt.description %></p>
-      <div>
-        <% if can? :destroy, invt %>
-          <%= link_to 'Remove', invt, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this inventory! Do you want to continue?' }, type:"button" %>
-         <% else %>
-          <%= link_to 'View', inventory_path(invt), type:"button" %>
-         <% end %>
-      </div>
-    </li>
+  <ul>
+    <% @inventories.each do |invt| %>
+      <%= link_to inventory_path(invt.id) %>
+      <li>
+        <h4><%= invt.name %></h4>
+        <p><%= invt.description %></p>
+        <div>
+          <% if can? :destroy, invt %>
+            <%= link_to 'Remove', invt, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this inventory! Do you want to continue?' }, type:"button" %>
+          <% else %>
+            <%= link_to 'View', inventory_path(invt), type:"button" %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
   <% end %>
-</ul>
-<% end %>
+</section>

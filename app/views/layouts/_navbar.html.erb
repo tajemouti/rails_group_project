@@ -1,33 +1,33 @@
 <nav class="navbar">
-    <% if user_signed_in? %>
-      <div class="app-options">
-        <ul>
-          <li>
+  <% if user_signed_in? %>
+    <div class="app-options">
+      <ul>
+        <li>
           <%= link_to 'Recipe App', authenticated_root_path %>
-          </li>
-          <li>
-            <%= link_to 'Foods', foods_path %>
-          </li>
-          <li>
-            <%= link_to 'Recipies', recipes_path %>
-          </li>
-          <li>
-            <%= link_to 'Public Recipies', public_recipes_path %>
-          </li>
-          <li>
-            <%= link_to 'Inventories', inventories_path %>
-          </li>
-        </ul>
-      </div>
-      <div class="user-options">
-        <ul>
-          <li>
-            <p>Hi <%= current_user.name %></p>
-          </li>
-          <li>
-            <%= link_to 'Sign Out', destroy_user_session_path , method: :delete %>
-          </li>
-        </ul>
-      </div>
-    <% end %>
+        </li>
+        <li>
+          <%= link_to 'Foods', foods_path %>
+        </li>
+        <li>
+          <%= link_to 'Recipies', recipes_path %>
+        </li>
+        <li>
+          <%= link_to 'Public Recipies', public_recipes_path %>
+        </li>
+        <li>
+          <%= link_to 'Inventories', inventories_path %>
+        </li>
+      </ul>
+    </div>
+    <div class="user-options">
+      <ul>
+        <li>
+          <p>Hi <%= current_user.name %></p>
+        </li>
+        <li>
+          <%= link_to 'Sign Out', destroy_user_session_path , method: :delete %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
 </nav>
