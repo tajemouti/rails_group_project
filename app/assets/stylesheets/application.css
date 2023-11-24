@@ -377,12 +377,6 @@ li div {
   background-color: #27ae60;
 }
 
-#inventoryModal,
-#recipeModal {
-  display: grid;
-  gap: 2rem;
-}
-
 select {
   width: 100%;
   padding: 10px;
@@ -523,4 +517,20 @@ select {
 
 .public-recipe:hover {
   transform: scale(1.02);
+}
+
+.public-recipe p {
+  font-size: 16px;
+}
+
+.public-recipe h3 {
+  font-size: 22px;
+}
+
+.recipe-item + p {
+  font-size: 16px;
+}
+
+.recipe-item h3 {
+  font-size: 22px;
 }

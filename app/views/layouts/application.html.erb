@@ -17,76 +17,61 @@
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
-
-    <script>
-  // Get the modal elements
-  var recipeModal = document.getElementById('recipeModal');
-  var inventoryModal = document.getElementById('inventoryModal');
-
-  // Get the button elements that open the modals
-  var openRecipeModalBtn = document.getElementById('openRecipeModal');
-  var openInventoryModalBtn = document.getElementById('openInventoryModal');
-
-  // Function to open the recipe modal
-  openRecipeModalBtn.onclick = function() {
-    recipeModal.style.display = 'block';
-  }
-
-  // Function to open the inventory modal
-  openInventoryModalBtn.onclick = function() {
-    inventoryModal.style.display = 'block';
-  }
-
-  // Function to close the modals
-  function closeModal(modal) {
-    modal.style.display = 'none';
-  }
-
-  // Close the modals when the 'x' is clicked
-  recipeModal.querySelector('span').onclick = function() {
-    closeModal(recipeModal);
-  }
-
-  inventoryModal.querySelector('span').onclick = function() {
-    closeModal(inventoryModal);
-  }
-
-  // Close the modals when clicking outside the content area
-  window.onclick = function(event) {
-    if (event.target == recipeModal || event.target == inventoryModal) {
-      closeModal(recipeModal);
-      closeModal(inventoryModal);
-    }
-  }
-</script>
-
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-  var addFoodLink = document.getElementById("add-food-link");
-  var popupModal = document.getElementById("popup-modal");
+    document.addEventListener('click', function(event) {
+      if (event.target.id === 'openRecipeModal') {
+        let recipeModal = document.getElementById('recipeModal');
+        if (recipeModal) {
+          recipeModal.style.display = 'block';
+        }
+      }
 
-  if (!addFoodLink || !popupModal) {
-    console.error("Missing required elements");
-    return;
-  }
+      if (event.target.id === 'close-button') {
+        let recipeModal = document.getElementById('recipeModal');
+        if (recipeModal) {
+          recipeModal.style.display = 'none';
+        }
+      }
 
-  // Show the modal when the "Add Food" link is clicked
-  addFoodLink.addEventListener("click", function() {
-    console.log("Add Food link clicked");
-    popupModal.style.display = "block";
-  });
+      if (event.target.id === 'openInventoryModal') {
+        let inventoryModal = document.getElementById('inventoryModal');
+        if (inventoryModal) {
+          inventoryModal.style.display = 'block';
+        }
+      }
 
-  // Hide the modal when the "x" button inside the modal is clicked
-  var closeButton = popupModal.querySelector("span");
-  if (closeButton) {
-    closeButton.addEventListener("click", function() {
-      console.log("Close button clicked");
-      popupModal.style.display = "none";
+      if (event.target.id === 'close-button-inventory') {
+        let inventoryModal = document.getElementById('inventoryModal');
+        if (inventoryModal) {
+          inventoryModal.style.display = 'none';
+        }
+      }
     });
-  } else {
-    console.error("Close button not found");
-  }
-});
-</script>
+
+    document.addEventListener("turbo:load", function() {
+      var addFoodLink = document.getElementById("add-food-link");
+      var popupModal = document.getElementById("popup-modal");
+
+      if (!addFoodLink || !popupModal) {
+        console.error("Missing required elements");
+        return;
+      }
+
+      addFoodLink.addEventListener("click", function() {
+        console.log("Add Food link clicked");
+        popupModal.style.display = "block";
+      });
+
+      var closeButton = popupModal.querySelector("span");
+      if (closeButton) {
+        closeButton.addEventListener("click", function() {
+          console.log("Close button clicked");
+          popupModal.style.display = "none";
+        });
+      } else {
+        console.error("Close button not found");
+      }
+    });
+  </script>
   </body>
 </html>
