@@ -1,0 +1,19 @@
+<section class="auth-forms">
+  <div class="form-box">
+    <div class="left-inventory"></div>
+    <div class="right">
+      <h2>Add New Inventory</h2>
+      <%= form_with(model: @inventory) do |f| %>
+        <div class="field">
+          <%= f.text_field :name, placeholder: "Inventory Name", autofocus: true, required: true %>
+        </div>
+        <div class="field">
+          <%= f.text_area :description, placeholder: "Type here the inventory description", required: true %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Add Inventory" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

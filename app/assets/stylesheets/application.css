@@ -1,15 +1,536 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #f2f2f2;
+}
+
+ul {
+  list-style: none;
+}
+
+.auth-forms {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 100px;
+}
+
+.auth-forms::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: url("https://images.unsplash.com/photo-1542990253-a781e04c0082?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHJlY2lwZXxlbnwwfDB8MHx8fDA%3D") no-repeat center;
+  background-size: cover;
+  filter: blur(50px);
+  z-index: -1;
+}
+
+.form-box {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 0 19px 5px rgba(0, 0, 0, 0.19);
+}
+
+.left {
+  background: url("https://images.unsplash.com/photo-1542990253-a781e04c0082?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHJlY2lwZXxlbnwwfDB8MHx8fDA%3D") no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.right {
+  padding: 40px;
+}
+
+h2 {
+  position: relative;
+  padding: 0 0 10px;
+  margin-bottom: 10px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 50px;
+  border-radius: 2px;
+  background-color: #2ecc71;
+}
+
+.field input {
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0);
+  outline: none;
+  background-color: rgba(230, 230, 230, 0.6);
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+  transition: 0.3s;
+}
+
+.field input:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-bottom: 22px;
+}
+
+.actions input[type="submit"] {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: #2ecc71;
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 22px;
+}
+
+.actions input[type="submit"]:hover {
+  background-color: #27ae60;
+}
+
+.field input:focus {
+  border: 2px solid rgba(30, 85, 250, 0.47);
+  background-color: #fff;
+}
+
+.left-food {
+  background: url("https://plus.unsplash.com/premium_photo-1670601440146-3b33dfcd7e17?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGZvb2R8ZW58MHwwfDB8fHww") no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.left-recipe {
+  background: url("https://images.unsplash.com/photo-1542010589005-d1eacc3918f2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVjaXBlfGVufDB8MHwwfHx8MA%3D%3D") no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.left-inventory {
+  background: url("https://images.unsplash.com/photo-1423483641154-5411ec9c0ddf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGludmVudG9yeSUyMGZvb2R8ZW58MHwwfDB8fHww") no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.field textarea {
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0);
+  outline: none;
+  background-color: rgba(230, 230, 230, 0.6);
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+  transition: 0.3s;
+}
+
+.field textarea:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 880px) {
+  .form-box {
+    grid-template-columns: 1fr;
+  }
+
+  .left,
+  .left-food,
+  .left-recipe,
+  .left-inventory {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .auth-forms {
+    padding: 10px;
+  }
+
+  .form-box {
+    max-width: 100%;
+  }
+
+  .left,
+  .left-food,
+  .left-recipe,
+  .left-inventory {
+    height: 150px;
+  }
+
+  .right {
+    padding: 15px;
+  }
+}
+
+.navbar {
+  background-color: #2ecc71;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+  margin-right: 10px;
+}
+
+td a {
+  color: red;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.user-options ul {
+  display: flex;
+}
+
+.hero {
+  padding: 20px;
+  margin-bottom: 20px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.hero > a {
+  background-color: #2ecc71;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.recipe-buttons a {
+  background-color: #2ecc71;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.public-recipe-link a {
+  text-decoration: none;
+  color: #000;
+}
+
+.inventory a {
+  text-decoration: none;
+  color: black;
+}
+
+.hero > a:hover {
+  background-color: #27ae60;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: #27ae60;
+  color: #fff;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
+.recipe-list {
+  display: grid;
+  gap: 2rem;
+}
+
+.recipe-list li {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  margin: 0 5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.recipe-list li:hover {
+  transform: scale(1.02);
+}
+
+li div {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .recipe-list li {
+    margin: 0 2rem;
+  }
+
+  li div {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero h3 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.recipes {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.recipe-public {
+  display: flex;
+  align-items: center;
+}
+
+.recipe-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.recipe-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.recipe-buttons a:hover {
+  background-color: #27ae60;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f8f8f8;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 60%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.modal h2 {
+  text-align: center;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  backdrop-filter: blur(5px);
+}
+
+.modal span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal.active,
+.overlay.active {
+  display: block;
+}
+
+.open-modal-btn {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #007bff;
+}
+
+.body-modal-open {
+  overflow: hidden;
+}
+
+.shopping {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.shopping h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.shopping-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.shopping-details div {
+  display: grid;
+  gap: 2rem;
+}
+
+.inventory-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 60%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.inventory-modal h2 {
+  text-align: center;
+}
+
+.inventory-modal span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.inventory-modal.active {
+  display: block;
+}
+
+.public-recipe {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+  width: 302px;
+  margin: 0 5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.public-recipe:hover {
+  transform: scale(1.02);
+}
+
+.public-recipe p {
+  font-size: 16px;
+}
+
+.public-recipe h3 {
+  font-size: 22px;
+}
+
+.recipe-item + p {
+  font-size: 16px;
+}
+
+.recipe-item h3 {
+  font-size: 22px;
+}

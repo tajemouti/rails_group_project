@@ -1,0 +1,106 @@
+<section class="hero">
+  <div>
+    <h3><%= @recipe.name%></h3>
+    <div>
+      <div class="recipe-details">
+        <div class="recipes">
+          <div class="recipe-public">
+            <p> Public: </p>
+              <%= form_with url:recipe_path(@recipe.id), :method => :patch do |f| %>
+                <%= f.check_box :public, checked: @recipe.public, onchange: "this.form.submit();" %>
+              <% end %>
+          </div>
+          <p> Preparation time: <%= @recipe.preparation_time %> min</p>
+        </div>
+        <p> Cooking time: <%= @recipe.cooking_time %> min </p>
+        <div class="recipe-buttons">
+            <a id="openRecipeModal">Generate shopping list</a>
+            <a id="openInventoryModal">Add ingredient</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if @recipe.recipe_foods.empty? %>
+    <p>No ingredients added yet.</p>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe.recipe_foods.includes(:food).each do |recipe| %>
+        <tr>
+          <td><%= recipe.food.food %></td>
+          <td><%= recipe.quantity %><%= recipe.food.measurement_unit %></td>
+          <td>$<%= recipe.quantity * recipe.food.price %></td>
+          <td>
+            <% if can? :destroy, recipe %>
+              <%= link_to 'Remove', recipe_recipe_food_path(@recipe.id, recipe.id), data: { turbo_method: :delete, turbo_confirm: 'You are about to remove this recipe food. Do you want to continue?' }, type:"button" %>
+            <% end %>
+          </td>
+        </tr> 
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+
+  <div id="recipeModal" class="modal">
+    <div>
+      <span id='close-button'>x</span>  
+    </div>
+    <div>
+      <h2>Add recipe food</h2>
+      <hr>
+    </div>
+
+    <div>
+      <%= form_with url: recipe_recipe_foods_path(params[:id]), scope: :recipe_foods do |f| %>
+        <% if @foods.empty? %>
+          <p>No food added! Please add food.</p>
+        <% else %>
+          <div class="field">
+            <%= f.select :food_id,@foods.collect { |food| [food.food, food.id] }, { :prompt => 'Select food'}, required: true %>
+          </div>
+          <div class="field">
+            <%= f.number_field :quantity, placeholder: "Quantity", required: true %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Add quantity" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="inventoryModal" class="modal">
+    <div>
+      <span id="close-button-inventory">x</span>
+    </div>
+    <div>
+      <h2>Generating Shopping List</h2>
+      <hr>
+    </div>
+
+    <p>Choose an inventory</p>
+
+    <div>
+      <%= form_with url: shopping_lists_path, method: :get  do |f| %>
+        <div class="field">
+          <%= f.select :inventory_id, @inventories.collect { |inventory| [inventory.name, inventory.id] }, :prompt => 'Select inventory', required: true %>
+        </div>
+        <div class="field">
+          <%= f.hidden_field :recipe_id, value: @recipes.id, required: true %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Generate" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+<section class="shopping">
+  <div class="hero">
+    <h2><%= @inventory.name %></h2>
+    <% if can? :destroy, @inventory %>
+      <a id="add-food-link">Add Food</a>
+    <% end %>
+  </div>
+<div>
+<% if @foods.empty? %>
+<p>No food added to the inventory yet.
+<%= @inventory.description %></p>
+<% else %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |fd| %>
+      <tr>
+        <td><%= fd.food.food %></td>
+        <td><%= fd.quantity %></td>
+        <td>
+        <% if can? :destroy, fd %>
+          <%= link_to 'Remove', inventory_inventory_food_path(:inventory_id => @inventory.id, :id => fd.id), 
+          data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this inventory food. Do you want to continue?' }, type:"button" %>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+<div class="inventory-modal" id="popup-modal">
+    <div><span>x</span></div>
+    <div>
+      <h2>Add inventory food</h2>
+      <hr>
+    </div>
+
+    <div>
+      <%= form_with url: inventory_inventory_foods_path(@inventory.id), scope: :inventory_foods do |f| %>
+        <div class="field">
+          <%= f.select :food_id,@foody.collect { |food| [food.food, food.id] }, { :prompt => 'Choose food'}, required: true %>
+        </div>
+
+        <div class="field">
+          <%= f.number_field :quantity, placeholder: "Quantity", required: true %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Add inventory food" %>
+        </div>
+      <% end %>
+    </div>
+</div>
+</section>

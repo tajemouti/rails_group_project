@@ -1,0 +1,25 @@
+<section class="auth-forms">
+  <div class="form-box">
+    <div class="left-food"></div>
+    <div class="right">
+      <h2>Add Food</h2>
+      <%= form_with(model: @food) do |f| %>
+        <div class="field">
+          <%= f.text_field :food, placeholder: "Food name", autofocus: true, required: true %>
+        </div>
+
+        <div class="field">
+          <%= f.text_field :measurement_unit, placeholder: "Measurement unit", required: true %>
+        </div>
+
+        <div class="field">
+          <%= f.text_field :price, placeholder: "Unit price", required: true %>
+        </div>
+        
+        <div class="actions">
+          <%= f.submit "Add Food" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

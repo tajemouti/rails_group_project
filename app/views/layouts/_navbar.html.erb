@@ -1,0 +1,33 @@
+<% if user_signed_in? %>
+  <nav class="navbar">
+    <div class="app-options">
+      <ul>
+        <li>
+          <%= link_to 'Recipe App', authenticated_root_path %>
+        </li>
+        <li>
+          <%= link_to 'Foods', foods_path %>
+        </li>
+        <li>
+          <%= link_to 'Recipes', recipes_path %>
+        </li>
+        <li>
+          <%= link_to 'Public Recipes', public_recipes_path %>
+        </li>
+        <li>
+          <%= link_to 'Inventories', inventories_path %>
+        </li>
+      </ul>
+    </div>
+    <div class="user-options">
+      <ul>
+        <li>
+          <p>Hi <%= current_user.name %></p>
+        </li>
+        <li>
+          <%= link_to 'Sign out', destroy_user_session_path , method: :delete %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<% end %>

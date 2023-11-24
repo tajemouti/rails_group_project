@@ -1,0 +1,25 @@
+<section class="hero">
+  <h1>Public recipes list</h1>
+  <% if @recipes.empty? %>
+    <p>No public recipes for the moment!</p>
+  <% else %>
+  <ul>
+    <% @recipes.includes(:user, :recipe_foods).each do |recipe| %>
+      <li class="public-recipe-link">
+        <%= link_to recipe_path(recipe.id) do %>
+          <div class="public-recipe">
+            <div class="recipe-owner">
+              <p><%= recipe.name %></p>
+              <p>by <%= recipe.user.name %></p>
+            </div>
+            <div class="recipe-details">
+              <p>Total food items: <%= recipe.recipe_foods.length %> </p>
+              <p>Total price: $<%= Recipe.calculate_total_amount(recipe) %></p>
+            </div>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+</section>
