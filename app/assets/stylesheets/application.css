@@ -377,12 +377,6 @@ li div {
   background-color: #27ae60;
 }
 
-#inventoryModal,
-#recipeModal {
-  display: grid;
-  gap: 2rem;
-}
-
 select {
   width: 100%;
   padding: 10px;
