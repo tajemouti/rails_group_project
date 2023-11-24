@@ -6,7 +6,7 @@ class Recipe < ApplicationRecord
 
   def self.calculate_total_amount(recipe)
     total_amount = 0
-    recipe.recipe_foods.each do |recipe_food|
+    recipe.recipe_foods.includes(:food).each do |recipe_food|
       food = recipe_food.food
       total_amount += recipe_food.quantity * food.price
     end
