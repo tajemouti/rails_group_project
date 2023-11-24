@@ -11,7 +11,7 @@
         <%= link_to recipe_path(rcp.id) do %>
           <li>
             <div class="recipe-item">
-              <h4><%= rcp.name %></h4>
+              <h3><%= rcp.name %></h3>
               <% if can? :destroy, rcp %>
                 <%= link_to 'Remove', rcp, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this recipe! Do you want to continue?' }, type:"button" %>
               <% end %>

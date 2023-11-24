@@ -10,7 +10,7 @@
       <% @inventories.each do |invt| %>
         <%= link_to inventory_path(invt.id) do %>
           <li class="public-recipe">
-            <h4><%= invt.name %></h4>
+            <h3><%= invt.name %></h3>
             <p><%= invt.description %></p>
             <div>
               <% if can? :destroy, invt %>

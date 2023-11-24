@@ -518,3 +518,15 @@ select {
 .public-recipe:hover {
   transform: scale(1.02);
 }
+
+.public-recipe h3 {
+  font-size: 22px;
+}
+
+.recipe-item + p {
+  font-size: 18px;
+}
+
+.recipe-item h3 {
+  font-size: 22px;
+}
