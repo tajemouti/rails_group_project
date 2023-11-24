@@ -18,31 +18,25 @@
 
     <%= yield %>
 
-    <script>
-  // Get the modal elements
-  var recipeModal = document.getElementById('recipeModal');
-  var inventoryModal = document.getElementById('inventoryModal');
+<%# <script defer>
+  let recipeModal = document.getElementById('recipeModal');
+  let inventoryModal = document.getElementById('inventoryModal');
 
-  // Get the button elements that open the modals
-  var openRecipeModalBtn = document.getElementById('openRecipeModal');
-  var openInventoryModalBtn = document.getElementById('openInventoryModal');
+  let openRecipeModalBtn = document.getElementById('openRecipeModal');
+  let openInventoryModalBtn = document.getElementById('openInventoryModal');
 
-  // Function to open the recipe modal
   openRecipeModalBtn.onclick = function() {
     recipeModal.style.display = 'block';
   }
 
-  // Function to open the inventory modal
   openInventoryModalBtn.onclick = function() {
     inventoryModal.style.display = 'block';
   }
 
-  // Function to close the modals
   function closeModal(modal) {
     modal.style.display = 'none';
   }
 
-  // Close the modals when the 'x' is clicked
   recipeModal.querySelector('span').onclick = function() {
     closeModal(recipeModal);
   }
@@ -51,7 +45,6 @@
     closeModal(inventoryModal);
   }
 
-  // Close the modals when clicking outside the content area
   window.onclick = function(event) {
     if (event.target == recipeModal || event.target == inventoryModal) {
       closeModal(recipeModal);
@@ -60,7 +53,7 @@
   }
 </script>
 
-<script>
+<script defer>
   document.addEventListener("DOMContentLoaded", function() {
   var addFoodLink = document.getElementById("add-food-link");
   var popupModal = document.getElementById("popup-modal");
@@ -70,13 +63,11 @@
     return;
   }
 
-  // Show the modal when the "Add Food" link is clicked
   addFoodLink.addEventListener("click", function() {
     console.log("Add Food link clicked");
     popupModal.style.display = "block";
   });
 
-  // Hide the modal when the "x" button inside the modal is clicked
   var closeButton = popupModal.querySelector("span");
   if (closeButton) {
     closeButton.addEventListener("click", function() {
@@ -87,6 +78,53 @@
     console.error("Close button not found");
   }
 });
-</script>
+</script> %>
+ <script>
+    document.addEventListener('click', function(event) {
+      // Handle openRecipeModalBtn click
+      if (event.target.id === 'openRecipeModal') {
+        let recipeModal = document.getElementById('recipeModal');
+        if (recipeModal) {
+          recipeModal.style.display = 'block';
+        }
+      }
+
+      // Handle openInventoryModalBtn click
+      if (event.target.id === 'openInventoryModal') {
+        let inventoryModal = document.getElementById('inventoryModal');
+        if (inventoryModal) {
+          inventoryModal.style.display = 'block';
+        }
+      }
+
+      // Add more conditions as needed
+    });
+
+    document.addEventListener("turbo:load", function() {
+      // Your other code here
+      var addFoodLink = document.getElementById("add-food-link");
+      var popupModal = document.getElementById("popup-modal");
+
+      if (!addFoodLink || !popupModal) {
+        console.error("Missing required elements");
+        return;
+      }
+
+      addFoodLink.addEventListener("click", function() {
+        console.log("Add Food link clicked");
+        popupModal.style.display = "block";
+      });
+
+      var closeButton = popupModal.querySelector("span");
+      if (closeButton) {
+        closeButton.addEventListener("click", function() {
+          console.log("Close button clicked");
+          popupModal.style.display = "none";
+        });
+      } else {
+        console.error("Close button not found");
+      }
+    });
+  </script>
   </body>
 </html>
