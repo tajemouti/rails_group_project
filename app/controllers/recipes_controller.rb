@@ -31,10 +31,9 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @foods = current_user.foods
-    @inventories = Inventory.all
     @recipe = current_user.recipes.includes(:recipe_foods).find(params[:id])
-    @recipes = Recipe.find(params[:id])
+    @foods = current_user.foods
+    @inventories = Inventory.all.includes(:inventory_foods)
   end
 
   def update
