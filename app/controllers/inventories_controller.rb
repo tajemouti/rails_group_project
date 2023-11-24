@@ -32,8 +32,7 @@ class InventoriesController < ApplicationController
   end
 
   def show
-    @inventory = Inventory.find(params[:id])
-    @foods = @inventory.inventory_foods.includes(:food)
+    @inventory = Inventory.includes(inventory_foods: :food).find(params[:id])
     @foody = Food.all
     @inventory_food = InventoryFood.new
   end
