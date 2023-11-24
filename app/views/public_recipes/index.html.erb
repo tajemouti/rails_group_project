@@ -4,7 +4,7 @@
     <p>No public recipes for the moment!</p>
   <% else %>
   <ul>
-    <% @recipes.each do |recipe| %>
+    <% @recipes.includes(:user, :recipe_foods).each do |recipe| %>
       <li>
         <%= link_to recipe_path(recipe.id) do %>
           <div>
