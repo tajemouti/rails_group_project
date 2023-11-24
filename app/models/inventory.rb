@@ -7,7 +7,7 @@ class Inventory < ApplicationRecord
 
   def calculate_foods(recipe)
     shopping_list = []
-    recipe.recipe_foods.each do |recipe_food|
+    recipe.recipe_foods.includes(:food).each do |recipe_food|
       food = recipe_food.food
       inventory_food = inventory_foods.where(food_id: food.id)[0]
       unless inventory_food
