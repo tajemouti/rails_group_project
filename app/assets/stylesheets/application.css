@@ -251,6 +251,26 @@ td a {
   transition: 0.3s;
 }
 
+.recipe-buttons a {
+  background-color: #2ecc71;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.public-recipe-link a {
+  text-decoration: none;
+  color: #000;
+}
+
+.inventory a {
+  text-decoration: none;
+  color: black;
+}
+
 .hero > a:hover {
   background-color: #27ae60;
 }
@@ -320,4 +340,187 @@ li div {
   li div {
     grid-template-columns: 1fr;
   }
+}
+
+.hero h3 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.recipes {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.recipe-public {
+  display: flex;
+  align-items: center;
+}
+
+.recipe-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.recipe-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.recipe-buttons a:hover {
+  background-color: #27ae60;
+}
+
+#inventoryModal,
+#recipeModal {
+  display: grid;
+  gap: 2rem;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f8f8f8;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 60%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.modal h2 {
+  text-align: center;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  backdrop-filter: blur(5px);
+}
+
+.modal span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal.active,
+.overlay.active {
+  display: block;
+}
+
+.open-modal-btn {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #007bff;
+}
+
+.body-modal-open {
+  overflow: hidden;
+}
+
+.shopping {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.shopping h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.shopping-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.shopping-details div {
+  display: grid;
+  gap: 2rem;
+}
+
+.inventory-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 60%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.inventory-modal h2 {
+  text-align: center;
+}
+
+.inventory-modal span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.inventory-modal.active {
+  display: block;
+}
+
+.public-recipe {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+  width: 302px;
+  margin: 0 5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.public-recipe:hover {
+  transform: scale(1.02);
 }

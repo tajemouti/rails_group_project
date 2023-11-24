@@ -6,10 +6,10 @@
     <p>No inventories yet. Please add an inventory.</p>
   <% else %>
 
-    <ul>
+    <ul class="inventory">
       <% @inventories.each do |invt| %>
         <%= link_to inventory_path(invt.id) do %>
-          <li>
+          <li class="public-recipe">
             <h4><%= invt.name %></h4>
             <p><%= invt.description %></p>
             <div>
