@@ -17,71 +17,8 @@
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
-
-<%# <script defer>
-  let recipeModal = document.getElementById('recipeModal');
-  let inventoryModal = document.getElementById('inventoryModal');
-
-  let openRecipeModalBtn = document.getElementById('openRecipeModal');
-  let openInventoryModalBtn = document.getElementById('openInventoryModal');
-
-  openRecipeModalBtn.onclick = function() {
-    recipeModal.style.display = 'block';
-  }
-
-  openInventoryModalBtn.onclick = function() {
-    inventoryModal.style.display = 'block';
-  }
-
-  function closeModal(modal) {
-    modal.style.display = 'none';
-  }
-
-  recipeModal.querySelector('span').onclick = function() {
-    closeModal(recipeModal);
-  }
-
-  inventoryModal.querySelector('span').onclick = function() {
-    closeModal(inventoryModal);
-  }
-
-  window.onclick = function(event) {
-    if (event.target == recipeModal || event.target == inventoryModal) {
-      closeModal(recipeModal);
-      closeModal(inventoryModal);
-    }
-  }
-</script>
-
-<script defer>
-  document.addEventListener("DOMContentLoaded", function() {
-  var addFoodLink = document.getElementById("add-food-link");
-  var popupModal = document.getElementById("popup-modal");
-
-  if (!addFoodLink || !popupModal) {
-    console.error("Missing required elements");
-    return;
-  }
-
-  addFoodLink.addEventListener("click", function() {
-    console.log("Add Food link clicked");
-    popupModal.style.display = "block";
-  });
-
-  var closeButton = popupModal.querySelector("span");
-  if (closeButton) {
-    closeButton.addEventListener("click", function() {
-      console.log("Close button clicked");
-      popupModal.style.display = "none";
-    });
-  } else {
-    console.error("Close button not found");
-  }
-});
-</script> %>
- <script>
+<script>
     document.addEventListener('click', function(event) {
-      // Handle openRecipeModalBtn click
       if (event.target.id === 'openRecipeModal') {
         let recipeModal = document.getElementById('recipeModal');
         if (recipeModal) {
@@ -89,7 +26,13 @@
         }
       }
 
-      // Handle openInventoryModalBtn click
+      if (event.target.id === 'close-button') {
+        let recipeModal = document.getElementById('recipeModal');
+        if (recipeModal) {
+          recipeModal.style.display = 'none';
+        }
+      }
+
       if (event.target.id === 'openInventoryModal') {
         let inventoryModal = document.getElementById('inventoryModal');
         if (inventoryModal) {
@@ -97,11 +40,15 @@
         }
       }
 
-      // Add more conditions as needed
+      if (event.target.id === 'close-button-inventory') {
+        let inventoryModal = document.getElementById('inventoryModal');
+        if (inventoryModal) {
+          inventoryModal.style.display = 'none';
+        }
+      }
     });
 
     document.addEventListener("turbo:load", function() {
-      // Your other code here
       var addFoodLink = document.getElementById("add-food-link");
       var popupModal = document.getElementById("popup-modal");
 
