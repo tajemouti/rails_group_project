@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Recipe show page', type: :feature do
   describe 'recipe' do
     before :each do
-        @user1 = User.create!(name: 'Tajemouti', email: 'tajemouti@gmail.com', password: '123456')
-        @user2 = User.create!(name: 'Newton', email: 'newton@gmail.com', password: '123456')
-        @user3 = User.create!(name: 'Ngala', email: 'ngala@gmail.com', password: '123456')
+      @user1 = User.create!(name: 'Tajemouti', email: 'tajemouti@gmail.com', password: '123456')
+      @user2 = User.create!(name: 'Newton', email: 'newton@gmail.com', password: '123456')
+      @user3 = User.create!(name: 'Ngala', email: 'ngala@gmail.com', password: '123456')
 
       visit '/users/sign_in'
       fill_in 'Email', with: 'tajemouti@gmail.com'
@@ -31,9 +31,9 @@ RSpec.describe 'Recipe show page', type: :feature do
 
   describe 'recipe show' do
     before :each do
-        @user1 = User.create!(name: 'Tajemouti', email: 'tajemouti@gmail.com', password: '123456')
-        @user2 = User.create!(name: 'Newton', email: 'newton@gmail.com', password: '123456')
-        @user3 = User.create!(name: 'Ngala', email: 'ngala@gmail.com', password: '123456')
+      @user1 = User.create!(name: 'Tajemouti', email: 'tajemouti@gmail.com', password: '123456')
+      @user2 = User.create!(name: 'Newton', email: 'newton@gmail.com', password: '123456')
+      @user3 = User.create!(name: 'Ngala', email: 'ngala@gmail.com', password: '123456')
 
       visit '/users/sign_in'
       fill_in 'Email', with: 'tajemouti@gmail.com'
