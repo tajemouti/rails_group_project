@@ -30,6 +30,24 @@ class RecipesController < ApplicationController
     end
   end
 
+  def show
+    @foods = current_user.foods
+    @inventories = Inventory.all
+    @recipe = current_user.recipes.includes(:recipe_foods).find(params[:id])
+    @recipes = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.public
+      @recipe.update(public: false)
+      flash.now[:notice] = 'Status changed to private.'
+    else
+      @recipe.update(public: true)
+      flash.now[:notice] = 'Status changed to public'
+    end
+  end
+
   private
 
   def set_recipe

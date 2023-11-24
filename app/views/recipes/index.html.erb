@@ -8,6 +8,7 @@
   <div> 
     <ul class="recipe-list">
       <% @recipes.each do |rcp| %>
+        <%= link_to recipe_path(rcp.id) do %>
           <li>
             <div class="recipe-item">
               <h4><%= rcp.name %></h4>
@@ -17,6 +18,7 @@
             </div>
             <p><%= rcp.description %></p>
           </li>
+        <% end %>
       <% end %> 
     </ul>
   </div>
