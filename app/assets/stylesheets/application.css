@@ -519,12 +519,16 @@ select {
   transform: scale(1.02);
 }
 
+.public-recipe p {
+  font-size: 16px;
+}
+
 .public-recipe h3 {
   font-size: 22px;
 }
 
 .recipe-item + p {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .recipe-item h3 {
