@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: rails_group_project_production
-  username: rails_group_project
-  password: <%= ENV["RAILS_GROUP_PROJECT_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
