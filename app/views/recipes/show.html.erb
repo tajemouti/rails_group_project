@@ -95,7 +95,7 @@
           <%= f.select :inventory_id, @inventories.collect { |inventory| [inventory.name, inventory.id] }, :prompt => 'Select inventory', required: true %>
         </div>
         <div class="field">
-          <%= f.hidden_field :recipe_id, value: @recipes.id, required: true %>
+          <%= f.hidden_field :recipe_id, value: @recipe.id, required: true %>
         </div>
         <div class="actions">
           <%= f.submit "Generate" %>
