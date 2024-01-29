@@ -42,7 +42,7 @@ Ruby on Rails, Visual Studia Code, WSL
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://rails-group-project.onrender.com)
+- [Live Demo Link](https://recipe-wizard-app.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
